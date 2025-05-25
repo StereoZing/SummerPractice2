@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My front</title>
-    <link rel="icon" type="image/png" href="/sourse/img/Logo1.png">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="/SummerPractice2/sourse/img/Logo1.png">
+    <link rel="stylesheet" href="/SummerPractice2/css/style.css">
 </head>
 <body>
     <header class="container">
         <span class = logo>
-            <img src="sourse/img/Logo1.png" alt="logo">
+            <img src="SummerPractice2/sourse/img/Logo1.png" alt="logo">
         </span>
         <nav>
             <ul>
-                <li class="active"><a href="/index.php">Главная</a></li>
-                <li class="active"><a href="/catalog.php">Каталог</a></li>
-                <li class="active"><a href="/register.php">Регистрация</a></li>
-                <li class="active"><a href="/enter.php">Вход</a></li>
+                <li class="active"><a href="/SummerPractice2/index.php">Главная</a></li>
+                <li class="active"><a href="/SummerPractice2/catalog.php">Каталог</a></li>
+                <li class="active"><a href="/SummerPractice2/register.php">Регистрация</a></li>
+                <li class="active"><a href="/SummerPractice2/enter.php">Вход</a></li>
             </ul>
         </nav>
         <div class="avatar">
-            <img src="sourse/img/NoAvatar.png" alt="avatar">
+            <img src="SummerPractice2/sourse/img/NoAvatar.png" alt="avatar">
         </div>            
     </header>
 

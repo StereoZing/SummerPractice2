@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog</title>
-    <link rel="icon" type="image/png" href="/sourse/img/Logo1.png">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="/SummerPractice2/sourse/img/Logo1.png">
+    <link rel="stylesheet" href="/SummerPractice2/css/style.css">
 </head>
 <body>
     <header class="container">
         <span class = logo>
-            <img src="sourse/img/Logo1.png" alt="logo">
+            <img src="SummerPractice2/sourse/img/Logo1.png" alt="logo">
         </span>
         <nav>
             <ul>
-                <li class="active"><a href="/index.php">Главная</a></li>
-                <li class="active"><a href="/catalog.php">Каталог</a></li>
-                <li class="active"><a href="/register.php">Регистрация</a></li>
-                <li class="active"><a href="/enter.php">Вход</a></li>
+                <li class="active"><a href="/SummerPractice2/index.php">Главная</a></li>
+                <li class="active"><a href="/SummerPractice2/catalog.php">Каталог</a></li>
+                <li class="active"><a href="/SummerPractice2/register.php">Регистрация</a></li>
+                <li class="active"><a href="/SummerPractice2/enter.php">Вход</a></li>
             </ul>
         </nav>
         <div class="avatar">
-            <img src="sourse/img/NoAvatar.png" alt="avatar">
+            <img src="SummerPractice2/sourse/img/NoAvatar.png" alt="avatar">
         </div>            
     </header>
     
@@ -30,7 +30,7 @@
             <div class="card">
                 <div class="info">
                     <div class="picture">
-                        <img src="sourse/img/photo1.jpg" alt="card">
+                        <img src="SummerPractice2/sourse/img/photo1.jpg" alt="card">
                     </div>
                     <div class="info-text">
                         <p>Адрес: Сормовская 4а<br>
@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="info">
                     <div class="picture">
-                        <img src="sourse/img/photo2.jpg" alt="card">
+                        <img src="SummerPractice2/sourse/img/photo2.jpg" alt="card">
                     </div>
                     <div class="info-text">
                         <p>Адрес: просп. Чекистов, 27<br>
@@ -76,7 +76,7 @@
             <div class="card">
                 <div class="info">
                     <div class="picture">
-                        <img src="sourse/img/photo3.jpg" alt="card">
+                        <img src="SummerPractice2/sourse/img/photo3.jpg" alt="card">
                     </div>
                     <div class="info-text">
                         <p>Адрес: Янковского, 24<br>
@@ -99,7 +99,7 @@
             <div class="card">
                 <div class="info">
                     <div class="picture">
-                        <img src="sourse/img/photo4.jpg" alt="card">
+                        <img src="SummerPractice2/sourse/img/photo4.jpg" alt="card">
                     </div>
                     <div class="info-text">
                         <p>Адрес: Кирова, 41<br>
