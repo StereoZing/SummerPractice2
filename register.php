@@ -12,29 +12,29 @@
     <?php require_once "blocks/header.php"; ?>
     
     <main>
-        <form>
+        <form action="/SummerPractice2/lib/reg.php" method="post">
             <div class="container">
                 <div class="formBlocks">
                     <div class="NameAndLogin">
                         <div class="input-field">
-                            <input type="text" placeholder="Имя">
+                            <input type="text" placeholder="Имя" name="name">
                         </div>
 
                         <div class="input-field">
-                            <input type="text" placeholder="Логин">
+                            <input type="text" placeholder="Логин" name="login">
                         </div>
                     </div>
                     <div class="input-field">
                         <div class="email">
-                            <input type="text" placeholder="Email">
+                            <input type="text" placeholder="Email" name="email">
                         </div>
                     </div>
                     <div class="PasswordAndConfirm">
                         <div class="input-field">
-                            <input type="password" placeholder="Пароль">
+                            <input type="password" placeholder="Пароль" name="password">
                         </div>
                         <div class="input-field">
-                            <input type="password" placeholder="Подтвердите пароль">
+                            <input type="password" placeholder="Подтвердите пароль" name="password_confirm">
                         </div>
                     </div>
                     <button class="regButton" type="submit">Зарегистрироваться</button>
@@ -42,13 +42,6 @@
         </form>
     </main>    
 
-    <footer>
-        <div class="container">
-            Нужна помощь или есть идеи?<br>
-            Работаем для вас каждый день с 9:00 до 22:00<br>
-            +7 928 203 63 21 StereoZing@gmail.com @stereo_zing<br>
-            © 2025 StereoZing<br>
-        </div>
-    </footer>
+    <?php require_once "blocks/footer.php"; ?>
 </body>
 </html>
