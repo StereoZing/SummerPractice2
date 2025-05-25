@@ -39,7 +39,7 @@
 
     <div class="container">
         <div class="btn">
-            <button  onclick="window.location.href='/catalog.html'">Посмотреть каталог</button>
+            <button  onclick="window.location.href='/catalog.php'">Посмотреть каталог</button>
         </div>
     </div>
 
