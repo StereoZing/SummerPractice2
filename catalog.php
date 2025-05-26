@@ -44,12 +44,51 @@
                     </div>
                 </div>
                 <div class="btns">
-                    <button id="rent">Забронировать</button>
-                    <!-- <button id="more">Подробнее</button> -->
+                    <div class="btns">
+                        <button id="rent" onclick="showBookingForm(' . $card->id . ')">Забронировать</button>
+                    </div>
                 </div>
             </div>';
             ?>
         </div>
+
+        <?php  echo '<div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Бронирование площадки</h2>
+            <form action="/SummerPractice2/lib/booking.php" method="post">
+                <input type="hidden" id="card_id" name="card_id">
+                <div class="input-field">
+                    <input type="date" name="booking_date" required>
+                </div>
+                <div class="input-field">
+                    <input type="time" name="start_time" required>
+                </div>
+                <div class="input-field">
+                    <input type="time" name="end_time" required>
+                </div>
+                <button type="submit" class="regButton">Подтвердить бронь</button>
+            </form>
+        </div>
+      </div>
+      <script>
+        function showBookingForm(cardId) {
+            document.getElementById("card_id").value = cardId;
+            document.getElementById("bookingModal").style.display = "block";
+        }
+        
+        function closeModal() {
+            document.getElementById("bookingModal").style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == document.getElementById("bookingModal")) {
+                closeModal();
+            }
+        }
+      </script>';
+      ?>
+
     </main>
 
     <?php require_once "blocks/footer.php"; ?>
