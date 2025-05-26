@@ -19,12 +19,12 @@
                     <div class="Enter">
                         <div class="Login">
                             <div class="input-field">
-                                <input type="text" placeholder="Логин">
+                                <input type="text" placeholder="Логин" name="login">
                             </div>
                         </div>
                         <div class="Password">
                             <div class="input-field">
-                                <input type="password" placeholder="Пароль">
+                                <input type="password" placeholder="Пароль" name="password">
                             </div>
                         </div>
                     </div>
