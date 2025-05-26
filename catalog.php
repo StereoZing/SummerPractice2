@@ -29,7 +29,7 @@
                     echo '<div class="card">
                 <div class="info">
                     <div class="picture">
-                        <img src="sourse/img/photo1.jpg" alt="card">
+                        <img src="sourse/img/' . $card->picture . '" alt="card">
                     </div>
                     <div class="info-text">
                         <p>Адрес: ' . $card->adress . '<br>
