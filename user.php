@@ -19,6 +19,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <?php
+                if(isset($_COOKIE['login'])){
+                    echo '<button onclick="window.location.href=\'/SummerPractice2/lib/logout.php\'">Выйти</button>';
+                } else {
+                    echo '<button onclick="window.location.href=\'/SummerPractice2/register.php\'">Регистрация</button>';
+                    echo '<button onclick="window.location.href=\'/SummerPractice2/enter.php\'">Вход</button>';
+                }
+            ?>
+        </div>
     </main>
 
     <?php require_once "blocks/footer.php"; ?>
