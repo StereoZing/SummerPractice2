@@ -39,7 +39,7 @@
                             Стоимость/час: ' . $card->price . '₽<br>
                             Компания: ' . $card->company . '<br>
                             Режим работы: ' . $card->worktime . '<br>
-                            Дополнительная информация: ' . $card->description . '<br>
+                            Дополнительная информация:<br> ' . $card->description . '<br>
                         </p>
                     </div>
                 </div>
