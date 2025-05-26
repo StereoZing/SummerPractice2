@@ -1,0 +1,36 @@
+/* За невозможностью редактировать предыдущий файл был создан этот */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+};
+
+main .regOrLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+};
+
+main .regOrLogin button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #07CF00;
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    border: none;
+    margin : 20px 50px;
+    border-radius:10px;
+    padding: 20px 10px;
+};
+
+main .regOrLogin button:hover {
+    background-color: #06A900;
+};
+
+main .regOrLogin button:active {
+    transform: scale(1.03);
+};
