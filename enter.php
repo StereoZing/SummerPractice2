@@ -13,7 +13,7 @@
 
     <main>
 
-        <form metod="post" action="/SummerPractice2/lib/login.php">
+        <form metрod="post" action="/SummerPractice2/lib/login.php">
             <div class="container">
                 <div class="formBlocks">
                     <div class="Enter">
