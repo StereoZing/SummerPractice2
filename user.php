@@ -11,7 +11,15 @@
 
     <?php require_once "blocks/header.php"; ?>
 
-    
+    <main>
+        <div class="container">
+            <div class="info">
+                <div class="info-text">
+                    <p>Ваш логин: <?php echo $_COOKIE['login']; ?></p>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <?php require_once "blocks/footer.php"; ?>
     
