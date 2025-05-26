@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +13,33 @@
 
     <main>
         <div class="groupOfCards">
-            <div class="card">
+            <?php
+                // DB
+                include("../../../pass.php");
+                $db = new PDO("mysql:host=localhost;dbname=$dbname", $user, $pass,
+                [PDO::ATTR_PERSISTENT => true, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+                // SQL
+                $sql = 'SELECT * FROM SummerPractice2cards';
+                $query = $db->prepare($sql);
+                $query->execute();
+                $cards = $query->fetchAll(PDO::FETCH_OBJ);
+
+                foreach($cards as $card)
+                    echo '<div class="card">
                 <div class="info">
                     <div class="picture">
                         <img src="sourse/img/photo1.jpg" alt="card">
                     </div>
                     <div class="info-text">
-                        <p>Адрес: Сормовская 4а<br>
-                            Год: 2014<br>
-                            Тип: стадион<br>
-                            Размер: 120 × 75<br>
-                            Стоимость/час: 78000₽<br>
-                            Компания: ООО “Фокус”<br>
-                            Режим работы: ср - вс, 8:00 - 23:00<br>
-                            Дополнительная информация:<br>
+                        <p>Адрес: ' . $card->adress . '<br>
+                            Год: ' . $card->year . '<br>
+                            Тип: ' . $card->type . '<br>
+                            Размер: ' . $card->size . '<br>
+                            Стоимость/час: ' . $card->price . '₽<br>
+                            Компания: ' . $card->company . '<br>
+                            Режим работы: ' . $card->worktime . '<br>
+                            Дополнительная информация: ' . $card->description . '<br>
                         </p>
                     </div>
                 </div>
@@ -34,7 +47,8 @@
                     <button id="rent">Забронировать</button>
                     <!-- <button id="more">Подробнее</button> -->
                 </div>
-            </div>
+            </div>';
+            ?>
 
             <div class="card">
                 <div class="info">
