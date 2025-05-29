@@ -32,3 +32,11 @@ INSERT INTO SummerPractice2cards (adress, year, type, size, price, company, work
 INSERT INTO SummerPractice2cards (adress, year, type, size, price, company, worktime, description, picture) VALUES ('Кирова, 41', 2021, 'бассейн', '25 × 15', 7000, 'ООО «Аквадар»', 'вт - сб, 8:00 - 20:00', 'Зелёное здание слева от входа', 'photo4.jpg');
 
 
+CREATE TABLE SummerPractice2bookings (
+    id int(10) unsigned NOT NULL AUTO_INCREMENT,
+    card_id int(10) unsigned NOT NULL,
+    user_id int(10) unsigned NOT NULL,
+    time TIME NOT NULL,
+    date DATE NOT NULL,
+    PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

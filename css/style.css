@@ -138,6 +138,16 @@ main {
     justify-content: center;
 }
 
+main .groupOfCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 850px; /* Ограничиваем максимальную ширину */
+    padding: 0 20px; /* Добавляем отступы по бокам */
+    box-sizing: border-box;
+}
+
 main .groupOfCards .card {
     display: flex;
     flex-direction: column;
@@ -338,4 +348,202 @@ main form:hover {
 main form .formBlocks .Enter .input-field input {
     width: 630px;
     margin: 20px 0;
+}
+
+main .regOrLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main .regOrLogin button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #07CF00;
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    border: none;
+    margin : 20px 50px;
+    border-radius:10px;
+    padding: 20px 10px;
+    min-width: 400px;
+}
+
+main .regOrLogin button:hover {
+    background-color: #06A900;
+}
+
+main .regOrLogin button:active {
+    transform: scale(1.03);
+}
+
+main .container .bookings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main .container .bookings .booking {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    border: #07CF00 solid 3px;
+    border-radius: 10px;
+    padding: 20px;
+    margin : 20px 0;
+    width: 700px;
+}
+
+main .container .bookings .booking:hover {
+    box-shadow: 7px 7px 10px #7E7C7C;
+    transform: scale(1.01);
+}
+
+main .container .bookings .booking .booking-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .container .bookings .booking .booking-img img {
+    display: block;
+    max-width: none;
+    max-height: none;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+main .container .bookings .booking .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+main .container .bookings .booking .info .booking-text {
+    display: flex;
+    flex-direction: row;
+    color:#046B00;
+    font-size: 14pt;
+    font-weight: normal;
+    justify-content: flex-start;
+    padding-left: 10px;
+    height: 100px;
+}
+
+main .container .bookings .booking .info .booking-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+main .container .bookings .booking .info .booking-btns button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-size: 16pt;
+    border: none;
+    font-weight: bold;
+    height: 50px;
+}
+
+main .container .bookings .booking .info .booking-btns #change {
+    background-color: #dca510;
+    color: white;
+}
+
+main .container .bookings .booking .info .booking-btns #cancel {
+    background-color: #df0a0a;
+    color: white;
+}
+
+main .container .bookings .booking .info .booking-btns #change:hover {
+    background-color: #b6890d;
+}
+
+main .container .bookings .booking .info .booking-btns #cancel:hover {
+    background-color: #b00808;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+main .container .newBooking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .container .newBooking .newBookingBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .container .newBooking .bookingAddress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main .container .newBooking .bookingAddress label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16pt;
+    font-weight: bold;
+    color: #046B00;
+}
+
+main .container .newBooking .bookingAddress select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    color: #A7A3A3;
+    
+    text-align: center;
+    font-size: 16pt;
+    border: 3px solid #07CF00;
+    height: 60px;
+    border-radius:  10px;
+}
+
+main .container .newBooking .newBookingBtn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #07CF00;
+    color: white;
+    font-size: 24pt;
+    font-weight: bold;
+    border: none;
+    padding: 10px 50px;
+    border-radius:  10px;
+}
+
+main .container .newBooking .newBookingBtn button:hover {
+    background-color: #06A900;
+}
+
+main .container .newBooking form {
+    width: auto;
+    padding: 20px;
 }

@@ -20,6 +20,7 @@
     }catch(PDOException $e){
         print("Error!: " . $e->getMessage() . "<br/>");
     }
+    setcookie("user_id", $query->fetch()['id'], time() + (3600 * 24 * 30), "/SummerPractice2/");
     setcookie("login", $login, time() + (3600 * 24 * 30), "/SummerPractice2/");
     header("Location: /SummerPractice2/user.php");
 ?>

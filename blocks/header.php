@@ -6,6 +6,7 @@
         <ul>
             <li class="active"><a href="/SummerPractice2/index.php">Главная</a></li>
             <li class="active"><a href="/SummerPractice2/catalog.php">Каталог</a></li>
+            <li class="active"><a href="/SummerPractice2/user.php">Резервирование</a></li>
 
             <?php
                 if(isset($_COOKIE['login'])){
