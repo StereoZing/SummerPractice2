@@ -1,6 +1,6 @@
 <?php
 // Подключение к базе данных
-include("../../pass.php");
+include("../../../pass.php");
 try {
     $db = new PDO("mysql:host=localhost;dbname=$dbname", $user, $pass, [
         PDO::ATTR_PERSISTENT => true, 
