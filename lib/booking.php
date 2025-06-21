@@ -1,19 +1,4 @@
 <?php
-// Должно быть ПЕРВЫМИ строками, без пробелов/вывода ДО этого!
-session_start();
-
-// Отладочный вывод (убрать в продакшене)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-var_dump($_SESSION);
-
-// Проверка авторизации пользователя
-if (!isset($_SESSION['user_id'])) {
-    // Используем относительный путь
-    header("Location: login.php");
-    exit();
-}
-
 // Подключение к базе данных
 include("../../pass.php");
 try {
@@ -25,6 +10,15 @@ try {
     die("Ошибка подключения к базе данных: " . $e->getMessage());
 }
 
+// Проверка авторизации через куки (как у вас сейчас)
+if (!isset($_COOKIE['user_id']) || empty($_COOKIE['user_id'])) {
+    header("Location: /SummerPractice2/login.php");
+    exit();
+}
+
+// Получаем user_id из куки
+$user_id = $_COOKIE['user_id'];
+
 // Обработка формы бронирования
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Валидация данных
@@ -33,16 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $card_id = filter_input(INPUT_POST, 'selectedCardId', FILTER_VALIDATE_INT);
     $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
     $time = filter_input(INPUT_POST, 'time', FILTER_SANITIZE_STRING);
-    $user_id = $_SESSION['user_id'];
     
-    // Проверка, что площадка существует
+    // Проверка площадки
     $stmt = $db->prepare("SELECT id FROM SummerPractice2cards WHERE id = ?");
     $stmt->execute([$card_id]);
     if (!$stmt->fetch()) {
         $errors[] = "Выбранная площадка не существует";
     }
     
-    // Проверка даты (должна быть не раньше текущего дня)
+    // Проверка даты
     $currentDate = new DateTime();
     $bookingDate = DateTime::createFromFormat('Y-m-d', $date);
     if (!$bookingDate || $bookingDate < $currentDate) {
@@ -54,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Некорректное время бронирования";
     }
     
-    // Проверка на дублирование брони (одна площадка, одно время, одна дата)
+    // Проверка на дублирование брони
     $stmt = $db->prepare("SELECT id FROM SummerPractice2bookings 
                          WHERE card_id = ? AND date = ? AND time = ?");
     $stmt->execute([$card_id, $date, $time]);
@@ -70,19 +63,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                  VALUES (?, ?, ?, ?)");
             $stmt->execute([$card_id, $user_id, $time, $date]);
             
-            // Перенаправляем с сообщением об успехе
-            $_SESSION['booking_success'] = "Бронирование успешно создано!";
-            header("Location: /SummerPractice2/booking.php");
+            // Перенаправляем обратно с параметром успеха
+            header("Location: /SummerPractice2/booking.php?success=1");
             exit();
         } catch (PDOException $e) {
             $errors[] = "Ошибка при сохранении бронирования: " . $e->getMessage();
         }
     }
     
-    // Если есть ошибки - сохраняем их в сессию и перенаправляем обратно
+    // Если есть ошибки - сохраняем их в URL
     if (!empty($errors)) {
-        $_SESSION['booking_errors'] = $errors;
-        header("Location: /SummerPractice2/booking.php");
+        $error_str = urlencode(implode('|', $errors));
+        header("Location: /SummerPractice2/booking.php?errors=" . $error_str);
         exit();
     }
 } else {
