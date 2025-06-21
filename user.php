@@ -83,6 +83,10 @@
                                                 Время: '.htmlspecialchars($booking['time']).'
                                             </p>
                                         </div>
+                                        <div class="booking-btns">
+                                            <button id="change">Изменить</button>
+                                            <button id="cancel">Отменить</button>
+                                        </div>
                                     </div>
                                 </div>';
                             }
