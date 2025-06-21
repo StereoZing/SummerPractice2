@@ -120,7 +120,7 @@
                                             </p>
                                         </div>
                                         <div class="booking-btns">
-                                            <button id="change">Изменить</button>
+                                            <button id="change" onclick="location.href=\'/SummerPractice2/change-booking.php?id='.$booking['id'].'\'">Изменить</button>
                                             <button id="cancel" onclick="location.href=\'/SummerPractice2/user.php?cancel='.$booking['id'].'\'">Отменить</button>
                                         </div>
                                     </div>
