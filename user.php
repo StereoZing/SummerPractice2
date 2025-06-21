@@ -13,23 +13,47 @@
 
     <main>
         <?php
-            if(isset($_COOKIE['login'])) {
-                echo '<div class="container">
-                    <div class="info">
-                        <div class="info-text">
-                            <p>Здравствуйте, '.htmlspecialchars($_COOKIE['login']).'</p>
-                        </div>
-                    </div>
-                </div>';
-            } else {
-                echo '<div class="container">
-                    <div class="info">
-                        <div class="info-text">
-                            <p>Вы не авторизованы!</p>
-                        </div>
-                    </div>
-                </div>';
+        // Обработка отмены бронирования
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_booking']) && isset($_COOKIE['user_id'])) {
+            include("../../pass.php");
+            try {
+                $db = new PDO("mysql:host=localhost;dbname=$dbname", $user, $pass, [
+                    PDO::ATTR_PERSISTENT => true, 
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ]);
+                
+                // Проверяем, что бронь принадлежит пользователю
+                $stmt = $db->prepare("SELECT id FROM SummerPractice2bookings WHERE id = ? AND user_id = ?");
+                $stmt->execute([$_POST['booking_id'], $_COOKIE['user_id']]);
+                
+                if ($stmt->fetch()) {
+                    // Удаляем бронь
+                    $stmt = $db->prepare("DELETE FROM SummerPractice2bookings WHERE id = ?");
+                    $stmt->execute([$_POST['booking_id']]);
+                    echo '<div class="container"><p class="success">Бронирование успешно отменено!</p></div>';
+                }
+            } catch (PDOException $e) {
+                echo '<div class="container"><p class="error">Ошибка при отмене бронирования</p></div>';
             }
+        }
+
+        if(isset($_COOKIE['login'])) {
+            echo '<div class="container">
+                <div class="info">
+                    <div class="info-text">
+                        <p>Здравствуйте, '.htmlspecialchars($_COOKIE['login']).'</p>
+                    </div>
+                </div>
+            </div>';
+        } else {
+            echo '<div class="container">
+                <div class="info">
+                    <div class="info-text">
+                        <p>Вы не авторизованы!</p>
+                    </div>
+                </div>
+            </div>';
+        }
         ?>
 
         <div class="container">
@@ -57,7 +81,7 @@
                         ]);
                         
                         $stmt = $db->prepare("
-                            SELECT b.date, b.time, c.adress, c.picture 
+                            SELECT b.id, b.date, b.time, c.adress, c.picture 
                             FROM SummerPractice2bookings b
                             JOIN SummerPractice2cards c ON b.card_id = c.id
                             WHERE b.user_id = ?
@@ -85,7 +109,10 @@
                                         </div>
                                         <div class="booking-btns">
                                             <button id="change">Изменить</button>
-                                            <button id="cancel">Отменить</button>
+                                            <form method="post" style="display: inline;">
+                                                <input type="hidden" name="booking_id" value="'.$booking['id'].'">
+                                                <button type="submit" name="cancel_booking" id="cancel">Отменить</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>';
