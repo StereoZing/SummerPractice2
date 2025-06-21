@@ -3,12 +3,12 @@ session_start();
 
 // Проверка авторизации пользователя
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /SummerPractice2/login.php");
+    header("Location: /SummerPractice2/enter.php");
     exit();
 }
 
 // Подключение к базе данных
-include("../../../pass.php");
+include("../../pass.php");
 try {
     $db = new PDO("mysql:host=localhost;dbname=$dbname", $user, $pass, [
         PDO::ATTR_PERSISTENT => true, 
