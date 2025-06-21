@@ -13,6 +13,25 @@
     
     <main>
         <div class="container">
+
+            <?php
+            // Вывод сообщений об ошибках
+            if (isset($_SESSION['booking_errors'])) {
+                echo '<div class="errors">';
+                foreach ($_SESSION['booking_errors'] as $error) {
+                    echo '<p>' . htmlspecialchars($error) . '</p>';
+                }
+                echo '</div>';
+                unset($_SESSION['booking_errors']);
+            }
+            
+            // Вывод сообщения об успехе
+            if (isset($_SESSION['booking_success'])) {
+                echo '<div class="success">' . htmlspecialchars($_SESSION['booking_success']) . '</div>';
+                unset($_SESSION['booking_success']);
+            }
+            ?>
+        
             <div class="newBooking">
                 <form action="/SummerPractice2/lib/booking.php" method="post">
                     <div class="bookingAddress">
