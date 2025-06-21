@@ -1,9 +1,16 @@
 <?php
+// Должно быть ПЕРВЫМИ строками, без пробелов/вывода ДО этого!
 session_start();
+
+// Отладочный вывод (убрать в продакшене)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+var_dump($_SESSION);
 
 // Проверка авторизации пользователя
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /SummerPractice2/enter.php");
+    // Используем относительный путь
+    header("Location: login.php");
     exit();
 }
 
