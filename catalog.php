@@ -15,28 +15,6 @@
     <main>
         <div class="groupOfCards">
 
-        <div class="card">
-                <div class="info">
-                    <div class="picture">
-                        <img src="sourse/img/photo1.jpg" alt="card">
-                    </div>
-                    <div class="info-text">
-                        <p>Адрес: ' . $card->adress . '<br>
-                            Год: ' . $card->year . '<br>
-                            Тип: ' . $card->type . '<br>
-                            Размер: ' . $card->size . '<br>
-                            Стоимость/час: ' . $card->price . '₽<br>
-                            Компания: ' . $card->company . '<br>
-                            Режим работы: ' . $card->worktime . '<br>
-                            Дополнительная информация:<br> ' . $card->description . '<br>
-                        </p>
-                    </div>
-                </div>
-                <div class="btns">
-                    <button id="rent" onclick="window.location.href='/SummerPractice2/booking.php'">Забронировать</button>
-                    <!-- <button id="more">Подробнее</button> -->
-                </div>
-            </div>
             <?php
                 // DB
                 include("../../pass.php");
@@ -68,7 +46,7 @@
                     </div>
                 </div>
                 <div class="btns">
-                    <button id="rent">Забронировать</button>
+                    <button id="rent" onclick="window.location.href=\'/SummerPractice2/booking.php\'">Забронировать</button>
                     <!-- <button id="more">Подробнее</button> -->
                 </div>
             </div>';
