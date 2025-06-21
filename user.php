@@ -13,8 +13,8 @@
 
     <main>
         <?php
-        // Обработка отмены бронирования
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_booking']) && isset($_COOKIE['user_id'])) {
+        // Обработка отмены бронирования через GET-параметр
+        if (isset($_GET['cancel']) && isset($_COOKIE['user_id'])) {
             include("../../pass.php");
             try {
                 $db = new PDO("mysql:host=localhost;dbname=$dbname", $user, $pass, [
@@ -24,17 +24,29 @@
                 
                 // Проверяем, что бронь принадлежит пользователю
                 $stmt = $db->prepare("SELECT id FROM SummerPractice2bookings WHERE id = ? AND user_id = ?");
-                $stmt->execute([$_POST['booking_id'], $_COOKIE['user_id']]);
+                $stmt->execute([$_GET['cancel'], $_COOKIE['user_id']]);
                 
                 if ($stmt->fetch()) {
                     // Удаляем бронь
                     $stmt = $db->prepare("DELETE FROM SummerPractice2bookings WHERE id = ?");
-                    $stmt->execute([$_POST['booking_id']]);
-                    echo '<div class="container"><p class="success">Бронирование успешно отменено!</p></div>';
+                    $stmt->execute([$_GET['cancel']]);
+                    
+                    // Перенаправляем без GET-параметра
+                    header("Location: /SummerPractice2/user.php?success=1");
+                    exit();
                 }
             } catch (PDOException $e) {
-                echo '<div class="container"><p class="error">Ошибка при отмене бронирования</p></div>';
+                header("Location: /SummerPractice2/user.php?error=1");
+                exit();
             }
+        }
+
+        // Показ сообщений
+        if (isset($_GET['success'])) {
+            echo '<div class="container"><p class="success">Бронирование успешно отменено!</p></div>';
+        }
+        if (isset($_GET['error'])) {
+            echo '<div class="container"><p class="error">Ошибка при отмене бронирования</p></div>';
         }
 
         if(isset($_COOKIE['login'])) {
@@ -109,10 +121,7 @@
                                         </div>
                                         <div class="booking-btns">
                                             <button id="change">Изменить</button>
-                                            <form method="post" style="display: inline;">
-                                                <input type="hidden" name="booking_id" value="'.$booking['id'].'">
-                                                <button type="submit" name="cancel_booking" id="cancel">Отменить</button>
-                                            </form>
+                                            <button id="cancel" onclick="location.href=\'/SummerPractice2/user.php?cancel='.$booking['id'].'\'">Отменить</button>
                                         </div>
                                     </div>
                                 </div>';
